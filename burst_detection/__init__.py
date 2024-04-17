@@ -80,10 +80,7 @@ def burst_detection(r,d,n,s,gamma,smooth_win):
                 cost[t,j] = tau(q[t-1],j,gamma,real_n) + fit(d[t],r[t],p[j])
 
         #add the state with the minimum cost to the optimal state sequence
-        try:
-            q[t] = np.where(cost[t,:] == min(cost[t,:]))[0]
-        except:
-            q[t] = np.where(cost[t,:] == min(cost[t,:]))
+        q[t] = np.where(cost[t,:] == min(cost[t,:]))
 
     return q, d, r, p
 
